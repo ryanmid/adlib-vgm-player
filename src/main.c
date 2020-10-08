@@ -36,42 +36,6 @@ int main(int argc, char **argv)
     // Configure system timer
     timer_configure(44100);
 
-    // Initialize video mode
-    vga_set_mode(VGA_80x25_16_COLOR_TEXT_MODE);
-    vga_text_disable_cursor();
-    vga_clear_screen(VGA_TEXT_COLOR_LIGHT_GRAY);
-    vga_paint_rect(
-        ' ',
-        VGA_TEXT_COLOR_BLACK,
-        VGA_TEXT_COLOR_BLUE,
-        1, 1,
-        78, 23
-    );
-    vga_write_text(
-        "DOS VGM Player",
-        VGA_TEXT_COLOR_BLUE,
-        VGA_TEXT_COLOR_LIGHT_GRAY,
-        33, 0
-    );
-    vga_write_text(
-        "https://github.com/ryanmid/adlib-vgm-player",
-        VGA_TEXT_COLOR_BLUE,
-        VGA_TEXT_COLOR_LIGHT_GRAY,
-        19, 24
-    );
-    vga_write_text(
-        header,
-        VGA_TEXT_COLOR_LIGHT_GRAY | VGA_TEXT_COLOR_LIGHT_BIT,
-        VGA_TEXT_COLOR_BLUE,
-        1, 1
-    );
-    vga_write_text(
-        line,
-        VGA_TEXT_COLOR_LIGHT_GRAY | VGA_TEXT_COLOR_LIGHT_BIT,
-        VGA_TEXT_COLOR_BLUE,
-        1, 2
-    );
-
     // Open data stream
     data_stream = vgm_open_stream(argv[1]);
 
@@ -115,9 +79,5 @@ int main(int argc, char **argv)
     timer_restore();
     vgm_close_stream(data_stream);
   
-    // Restore video mode
-    //vga_set_mode(VGA_80x25_16_COLOR_TEXT_MODE);
-    vga_text_enable_cursor();
-
     return 0;
 }

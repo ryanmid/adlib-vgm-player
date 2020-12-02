@@ -8,23 +8,10 @@ unsigned long long total_ticks;
 
 int main(int argc, char **argv)
 {
-    int i, j;
     unsigned long long last_ticks;
     unsigned long long next_ticks;
     player_state_t player_state;
     vgm_stream_t *data_stream;
-    char line[80];
-    char *header = "Chn|AMP|VI|EG|KSR|dbScale|dbTotal|Attck|Decay|Sustn|Rel|Frq|Key|Oct|Fdbk|Wvfrm";
-    for(i=0; header[i] != '\0'; i++)
-    {
-        if (header[i] == '|')
-        {
-            for(j=1; j<25; j++)
-            header[i] = 186;
-        }
-        line[i] = (char)205;
-    }
-    line[i] = '\0';
 
     // Configure vgm interpreter
     if(vgm_interpreter_init() == 0)
